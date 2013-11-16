@@ -1,0 +1,38 @@
+<!-- application/views/scripts/index/index.phtml -->
+<div class="row">
+    <div class="col-md-5">
+        <p>Users:</p>
+        <?php foreach ($this->entries as $entry): ?>
+
+            <div class="media">
+                <a class="pull-left" href="#">
+                    <img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 64px; height: 64px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAADHUlEQVR4Ae1abU/aUBg9ItSmqaJEEXVmGl/mXMMWp8mWmPnb/WIWs+l0yFBHWOtLsGIHQq4NFLfbVkLxfvISP5h7m0DvW89zn/Occ8sHBhzH+QeBr5jAuQepSwKkAgRnQFpAcAFAKkAqQHAGpAUEF4A8BKUFpAUEZ0BaQHAByLeAtIC0gOAMSAsILgD5FpAWEN0C8X4IaFbPcZArouHeI6aNYclYxfSIEoF0cbq3hysCTK2uYyEVnYssizSfAzMCzzT5LeCWsfutgJrbwpCWQItUkN/dR/W+G6Nh5WE6BK5LcOdFJrpLelvPgdkbgelxK6B6ZsKlcKnFT1ib02H/OcXNHeXTz9On1avg8MR5FNCDdfgd5402tMkVfFjQqUL2cU3amFhew0SNB/NRiCd2uRXgee0gVP3qCDvb2zi5usPY63mMPlB6mfsJghQMYzaypTimX6VACEGlVMCv4xxVSB2kpWMqrYIPMwLP0eQkoInrG2pserXqdbRo2d26jdzOV9hNWnznFPlKG2nDQEYLQwzGQmbiqSVkZzT6JMHFma+QQSx+NKCDH9PfB+/FSYCCpJ4IYmayX7C1tYXF5CDtE9i0oqWCGczFXBtFK7TB38sSHBKeA+m3Kxju7Di5gLkRfxv9YXbgnnrnJIBud8hPGBhS/MrGoD8Q4vvfawVTKP8uoFSuBx1im7BuqTzoVS0WEY7STs3CeSimvjADYI4v7kNQHxsFLsowcz+ASQWXF/6RmMD46DDGP29iPjgM42hW8tjN20ivrMPIqEDDwkGpFqxNUtXUai4Ke8dIb74BNyZH4p1HuBWgZlaRnaVCdh2YZpmeA0B6+T0y9FUfV1SoKv1QdWhKaJWEolFxeCgenQRrtZl32NjIIunvxD1DzroFH2YnFb77QL//EfJIA/R3EOKqDpVbT72bfw7M3gjdXt8EdKFeZovbAi8zXXbXkgCWE7FGpALEqjebrVQAy4lYI1IBYtWbzVYqgOVErBGpALHqzWYrFcByItaIVIBY9WazlQpgORFrRCpArHqz2UoFsJyINSIVIFa92WyFV8B/jS90RY5BDxEAAAAASUVORK5CYII=">
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading"><?php echo $this->escape($entry->name); ?></h4>
+                    <dd><?php echo $this->escape($entry->age) . ' / ' . $this->escape($entry->gener); ?> </dd>
+                </div>
+            </div>
+        <?php endforeach ?>
+    </div>
+    <div class="col-md-7">
+        <p>Messages</p>
+        <?php foreach($this->messages as $message):
+            //get user info
+            $this->userMapper->find($message->getIdSender(),$this->user);
+            ?>
+            <div class="media">
+                <a class="pull-left" href="#">
+                    <img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 64px; height: 64px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAADHUlEQVR4Ae1abU/aUBg9ItSmqaJEEXVmGl/mXMMWp8mWmPnb/WIWs+l0yFBHWOtLsGIHQq4NFLfbVkLxfvISP5h7m0DvW89zn/Occ8sHBhzH+QeBr5jAuQepSwKkAgRnQFpAcAFAKkAqQHAGpAUEF4A8BKUFpAUEZ0BaQHAByLeAtIC0gOAMSAsILgD5FpAWEN0C8X4IaFbPcZArouHeI6aNYclYxfSIEoF0cbq3hysCTK2uYyEVnYssizSfAzMCzzT5LeCWsfutgJrbwpCWQItUkN/dR/W+G6Nh5WE6BK5LcOdFJrpLelvPgdkbgelxK6B6ZsKlcKnFT1ib02H/OcXNHeXTz9On1avg8MR5FNCDdfgd5402tMkVfFjQqUL2cU3amFhew0SNB/NRiCd2uRXgee0gVP3qCDvb2zi5usPY63mMPlB6mfsJghQMYzaypTimX6VACEGlVMCv4xxVSB2kpWMqrYIPMwLP0eQkoInrG2pserXqdbRo2d26jdzOV9hNWnznFPlKG2nDQEYLQwzGQmbiqSVkZzT6JMHFma+QQSx+NKCDH9PfB+/FSYCCpJ4IYmayX7C1tYXF5CDtE9i0oqWCGczFXBtFK7TB38sSHBKeA+m3Kxju7Di5gLkRfxv9YXbgnnrnJIBud8hPGBhS/MrGoD8Q4vvfawVTKP8uoFSuBx1im7BuqTzoVS0WEY7STs3CeSimvjADYI4v7kNQHxsFLsowcz+ASQWXF/6RmMD46DDGP29iPjgM42hW8tjN20ivrMPIqEDDwkGpFqxNUtXUai4Ke8dIb74BNyZH4p1HuBWgZlaRnaVCdh2YZpmeA0B6+T0y9FUfV1SoKv1QdWhKaJWEolFxeCgenQRrtZl32NjIIunvxD1DzroFH2YnFb77QL//EfJIA/R3EOKqDpVbT72bfw7M3gjdXt8EdKFeZovbAi8zXXbXkgCWE7FGpALEqjebrVQAy4lYI1IBYtWbzVYqgOVErBGpALHqzWYrFcByItaIVIBY9WazlQpgORFrRCpArHqz2UoFsJyINSIVIFa92WyFV8B/jS90RY5BDxEAAAAASUVORK5CYII=">
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading"><?php echo $this->user->getName();?></h4>
+                    <dd><?php echo $this->escape($this->user->age) . ' / ' . $this->escape($this->user->gener); ?> </dd>
+                    <div>
+                        <?php print $message->getMsg(); ?>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach ?>
+    </div>
+</div>
